@@ -42,7 +42,7 @@ typedef enum{
 @property (nonatomic, assign) CGFloat aBottom;
 
 /*
- frame.origin.x = left 
+ frame.origin.x = left
  */
 @property (nonatomic, assign) CGFloat left;
 @property (nonatomic, assign) CGFloat aLeft;
@@ -113,42 +113,63 @@ typedef enum{
 @property (nonatomic, assign) CGFloat aToBottom;
 
 
-/** auto font */
+#ifndef __INCvxWorksh  /*防止该头文件被重复引用*/
+#define __INCvxWorksh
 
-extern UIFont *AutoSystemFont(CGFloat f);
-extern UIFont *AutoBoldSystemFont(CGFloat f);
-extern UIFont *AutoFontWithName(NSString *fontName, CGFloat f);
+#ifdef __cplusplus    //__cplusplus是cpp中自定义的一个宏
+extern "C" {          //告诉编译器，这部分代码按C语言的格式进行编译，而不是C++的
+    
+#endif
+    
+    /** auto font */
+    
+    extern UIFont *AutoSystemFont(CGFloat f);
+    extern UIFont *AutoBoldSystemFont(CGFloat f);
+    extern UIFont *AutoFontWithName(NSString *fontName, CGFloat f);
+    
+    /** RGB CSS Color */
+    
+    extern UIColor *CSS(NSString *str, CGFloat a);
+    extern UIColor *RGB(CGFloat r, CGFloat g, CGFloat b, CGFloat a);
+    
+    
+    //获取机型尺寸
+    extern DeviceSize CurrentDevice();
+    
+    //坐标转换
+    /*auto Exchange */
+    
+    extern CGFloat aFloat(CGFloat X);
+    //其他尺寸转inch4.7坐标
+    extern CGFloat dFloat(CGFloat X);
+    
+    //4inch坐标转换 其他尺寸坐标
+    extern CGFloat AFloat(CGFloat X, bool isWidth);
+    //其他尺寸转inch4.7坐标
+    extern CGFloat DFloat(CGFloat X, bool isWidth);
+    
+    /*CGRectGetMinX */
+    extern CGFloat RectMinX(CGRect rect);
+    /*CGRectGetMinY */
+    extern CGFloat RectMinY(CGRect rect);
+    /*CGRectGetMinX */
+    extern CGFloat RectMaxX(CGRect rect);
+    /*CGRectGetMaxY */
+    extern CGFloat RectMaxY(CGRect rect);
+    /*CGPointMake */
+    extern CGPoint APointMake(CGFloat x, CGFloat y);
+    /*CGSizeMake */
+    extern CGSize  ASizeMake(CGFloat w, CGFloat h);
+    /*CGFrameMake */
+    extern CGRect  ARectMake(CGFloat X, CGFloat Y, CGFloat W, CGFloat H);
+    /**** some declaration or so *****/
+    
+#ifdef __cplusplus
+}
+#endif
 
-/** RGB CSS Color */
+#endif
 
-extern UIColor *CSS(NSString *str, CGFloat a);
-extern UIColor *RGB(CGFloat r, CGFloat g, CGFloat b, CGFloat a);
-
-
-//获取机型尺寸
-extern DeviceSize CurrentDevice();
-
-//坐标转换
-/*auto Exchange */
-//4inch坐标转换 其他尺寸坐标
-extern CGFloat AFloat(CGFloat X, bool isWidth);
-//其他尺寸转inch4.7坐标
-extern CGFloat DFloat(CGFloat X, bool isWidth);
-
-/*CGRectGetMinX */
-extern CGFloat RectMinX(CGRect rect);
-/*CGRectGetMinY */
-extern CGFloat RectMinY(CGRect rect);
-/*CGRectGetMinX */
-extern CGFloat RectMaxX(CGRect rect);
-/*CGRectGetMaxY */
-extern CGFloat RectMaxY(CGRect rect);
-/*CGPointMake */
-extern CGPoint APointMake(CGFloat x, CGFloat y);
-/*CGSizeMake */
-extern CGSize  ASizeMake(CGFloat w, CGFloat h);
-/*CGFrameMake */
-extern CGRect  ARectMake(CGFloat X, CGFloat Y, CGFloat W, CGFloat H);
 
 /**
  removes all subviews.

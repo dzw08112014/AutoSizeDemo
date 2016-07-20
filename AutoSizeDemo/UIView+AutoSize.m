@@ -373,6 +373,16 @@ DeviceSize CurrentDevice()
     return (SceenWidth <321.f&& SceenHeight< 481.f)?Inch3_5:(SceenWidth <321.f&& SceenHeight> 481.f)?Inch4:fabs((CGFloat)SceenWidth - 375.f)<2.f?Inch4_7:Inch5_5;
 }
 
+CGFloat aFloat(CGFloat X)
+{
+    return AFloat(X, NO);
+}
+
+CGFloat dFloat(CGFloat X)
+{
+    return DFloat(X, NO);
+}
+
 CGFloat AFloat(CGFloat X,bool isWidth)
 {
     switch (CurrentDevice())
