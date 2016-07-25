@@ -388,6 +388,7 @@ CGFloat AFloat(CGFloat X,bool isWidth)
     switch (CurrentDevice())
     {
         case Inch4:
+        case Inch3_5:
             return X/(isWidth?SIX_TO_FIVE_X:SIX_TO_FIVE_Y);
             break;
         case Inch5_5:
@@ -404,6 +405,7 @@ CGFloat DFloat(CGFloat X,bool isWidth)
     switch (CurrentDevice())
     {
         case Inch4:
+        case Inch3_5:
             return X*(isWidth?SIX_TO_FIVE_X:SIX_TO_FIVE_Y);
             break;
         case Inch5_5:
